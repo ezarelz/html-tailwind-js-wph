@@ -1,2 +1,6 @@
 node_modules
 .vscode
+
+##files on root folder
+index.html
+readme.md
