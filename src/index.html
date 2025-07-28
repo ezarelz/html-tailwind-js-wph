@@ -3,10 +3,202 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>wph-048 | Header Navigation</title>
+
+    <!-- Quicksand Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind Output -->
     <link rel="stylesheet" href="./css/output.css" />
   </head>
-  <body>
-    <h1>your code here</h1>
+
+  <body class="font-quicksand text-gray-900 bg-white">
+    <!-- === HEADER START === -->
+    <header class="w-full fixed top-0 left-0 z-50 bg-white shadow-sm">
+      <div
+        class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between"
+      >
+        <!-- Logo -->
+        <a href="#" class="flex items-center">
+          <img
+            src="/assets/logo-symbol.png"
+            alt="Logo Icon"
+            class="h-6 w-auto"
+          />
+          <span class="ml-1 text-lg font-bold text-[#0F172A]">Your Logo</span>
+        </a>
+
+        <!-- Hamburger (Mobile Only) -->
+        <div class="lg:hidden">
+          <button
+            id="hamburgerBtn"
+            class="text-2xl text-black focus:outline-none"
+          >
+            ☰
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div
+          id="mobileMenu"
+          class="hidden lg:hidden fixed top-16 right-4 bg-white shadow-md px-6 py-6 rounded-md w-64"
+        >
+          <nav class="flex flex-col space-y-4">
+            <a href="#about" class="text-base font-medium hover:text-orange-500"
+              >About</a
+            >
+            <a
+              href="#service"
+              class="text-base font-medium hover:text-orange-500"
+              >Service</a
+            >
+            <a
+              href="#projects"
+              class="text-base font-medium hover:text-orange-500"
+              >Projects</a
+            >
+            <a
+              href="#testimonials"
+              class="text-base font-medium hover:text-orange-500"
+              >Testimonials</a
+            >
+            <a href="#faq" class="text-base font-medium hover:text-orange-500"
+              >FAQ</a
+            >
+            <a
+              href="#contact"
+              class="block text-center mt-4 bg-[#FF5C36] hover:bg-[#ff3f17] text-white font-semibold text-sm py-3 rounded-full transition"
+            >
+              Let’s Talk
+            </a>
+          </nav>
+        </div>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden lg:flex items-center space-x-30">
+          <a href="#about" class="text-base font-medium hover:text-orange-500"
+            >About</a
+          >
+          <a href="#service" class="text-base font-medium hover:text-orange-500"
+            >Service</a
+          >
+          <a
+            href="#projects"
+            class="text-base font-medium hover:text-orange-500"
+            >Projects</a
+          >
+          <a
+            href="#testimonials"
+            class="text-base font-medium hover:text-orange-500"
+            >Testimonials</a
+          >
+          <a href="#faq" class="text-base font-medium hover:text-orange-500"
+            >FAQ</a
+          >
+          <a
+            href="#contact"
+            class="bg-[#FF5C36] hover:bg-[#ff3f17] text-white text-sm font-semibold px-6 py-2 rounded-full transition"
+          >
+            Let’s Talk
+          </a>
+        </nav>
+      </div>
+    </header>
+    <!-- === HEADER END === -->
+
+    <!-- === TOGGLE SCRIPT Pakai Javascript === -->
+    <script>
+      document.getElementById('hamburgerBtn').addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.toggle('hidden');
+      });
+    </script>
+
+    <!-- === HERO START === -->
+    <section class="pt-32 pb-16 bg-white">
+      <div
+        class="max-w-7xl mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-12"
+      >
+        <!-- LEFT: Text Content -->
+        <div class="w-full lg:w-1/2 text-center lg:text-left">
+          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
+            Your Tech Partner for <br />
+            <span class="text-[#FF5C36]">Smarter Growth</span>
+          </h1>
+          <p class="text-base text-gray-700 mb-6">
+            We deliver tailored IT solutions to help you scale with speed and
+            confidence.
+          </p>
+          <a
+            href="#contact"
+            class="inline-block bg-[#FF5C36] hover:bg-[#ff3f17] text-white font-semibold text-sm px-6 py-3 rounded-full transition"
+          >
+            Let’s Talk
+          </a>
+        </div>
+
+        <!-- RIGHT: Image -->
+        <div class="w-full lg:w-1/2 flex justify-center">
+          <img
+            src="/assets/hero-image.png"
+            alt="Hero Illustration"
+            class="w-full max-w-md"
+          />
+        </div>
+      </div>
+    </section>
+    <!-- === HERO END === -->
+    <!-- === ABOUT SECTION START === -->
+    <section id="about" class="py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <!-- Headline -->
+        <h2 class="text-2xl md:text-3xl font-bold mb-2">
+          End-to-End IT Solutions That Drive Results
+        </h2>
+        <p class="text-gray-600 mb-10">
+          From strategy to execution, we deliver solutions that grow your
+          business.
+        </p>
+
+        <!-- === BRAND PARTNER LOGO === -->
+        <div class="py-6 flex justify-center">
+          <img
+            src="/assets/container-logo.png"
+            alt="Trusted by Global Brands"
+            class="w-full max-w-[90%] md:max-w-[720px] object-contain filter grayscale"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-10 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-1 place-items-center">
+          <img
+            src="/assets/card-1.svg"
+            alt="Projects Delivered"
+            class="w-[140px] h-[140px]"
+          />
+          <img
+            src="/assets/card-2.svg"
+            alt="Years of Experience"
+            class="w-[140px] h-[140px]"
+          />
+          <img
+            src="/assets/card-3.svg"
+            alt="Industry Awards Won"
+            class="w-[140px] h-[140px]"
+          />
+          <img
+            src="/assets/card-4.svg"
+            alt="Client Satisfaction Rate"
+            class="w-[140px] h-[140px]"
+          />
+        </div>
+      </div>
+    </section>
+    <!-- === ABOUT SECTION END === -->
   </body>
 </html>
