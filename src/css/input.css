@@ -5,3 +5,111 @@
     font-family: 'Quicksand', sans-serif;
   }
 }
+@theme {
+  /* === Font Family === */
+  --font-quicksand: 'Quicksand', sans-serif;
+
+  /* === Font Weight === */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* === Display Font Sizes === */
+  --font-size-display-3xl: 3.75rem;
+  --line-height-display-3xl: 4.5rem;
+
+  --font-size-display-2xl: 3rem;
+  --line-height-display-2xl: 3.75rem;
+  --letter-spacing-display-2xl: -0.02em;
+
+  --font-size-display-xl: 2.5rem;
+  --line-height-display-xl: 3rem;
+  --letter-spacing-display-xl: -0.02em;
+
+  --font-size-display-lg: 2.25rem;
+  --line-height-display-lg: 2.75rem;
+  --letter-spacing-display-lg: -0.02em;
+
+  --font-size-display-md: 2rem;
+  --line-height-display-md: 2.5rem;
+
+  --font-size-display-sm: 1.75rem;
+  --line-height-display-sm: 2.375rem;
+
+  --font-size-display-xs: 1.5rem;
+  --line-height-display-xs: 2.25rem;
+
+  /* === Text Font Sizes === */
+  --font-size-text-xl: 1.25rem;
+  --line-height-text-xl: 2.125rem;
+
+  --font-size-text-lg: 1.125rem; /* 18px */
+  --line-height-text-lg: 1.75rem;
+
+  --font-size-text-md: 1rem;
+  --line-height-text-md: 1.875rem;
+
+  --font-size-text-sm: 0.875rem; /* 14px */
+  --line-height-text-sm: 1.5rem;
+
+  --font-size-text-xs: 0.75rem;
+  --line-height-text-xs: 1.5rem;
+
+  /* === Colors === */
+  --color-primary-500: oklch(0.72 0.18 39); /* Orange terang */
+}
+
+layer components {
+  .step-card {
+    @apply w-full max-w-[95%] bg-white p-6 rounded-xl shadow-md border border-neutral-100 relative;
+  }
+
+  .step-card:nth-child(even) {
+    @apply lg:ml-auto;
+  }
+
+  .step-card h3 {
+    font-size: var(--font-size-text-lg);
+    line-height: var(--line-height-text-lg);
+    @apply font-semibold mb-2 text-neutral-900;
+  }
+
+  .step-card p {
+    font-size: var(--font-size-text-sm);
+    line-height: var(--line-height-text-sm);
+    @apply text-neutral-500;
+  }
+
+  .step-number {
+    @apply hidden lg:block absolute left-1/2 -translate-x-1/2 -top-6 z-10 w-10 h-10;
+  }
+
+  .step-number-mobile {
+    @apply block lg:hidden w-6 h-6 text-xs text-white font-bold text-center leading-6 rounded-full absolute -top-3 -left-3;
+    background-color: var(--color-primary-500);
+  }
+
+  .process-line {
+    @apply hidden lg:block absolute top-0 left-1/2 w-px h-full bg-neutral-300 -translate-x-1/2 z-0;
+  }
+
+  .step-number-img {
+    @apply absolute z-10;
+    width: 2rem; /* default mobile: 32px */
+    height: 2rem;
+    top: 0;
+    left: -1rem;
+
+    @media (min-width: 1024px) {
+      .step-number-img {
+        width: 3rem; /* 48px */
+        height: 3rem;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+  }
+}
