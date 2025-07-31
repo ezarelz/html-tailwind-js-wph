@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class', // aktifkan dark mode berbasis class
-  content: ['./index.html'], // sesuaikan dengan lokasi file HTML-mu
+  darkMode: 'class', // <== penting
+  content: ['./public/**/*.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {},
   },

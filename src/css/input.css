@@ -1,70 +1,66 @@
 @import 'tailwindcss';
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-
+@custom-variant dark (&:where(.dark, .dark *));
 @layer base {
   body {
     font-family: 'Quicksand', sans-serif;
   }
-}
-@theme {
-  /* === Font Family === */
-  --font-quicksand: 'Quicksand', sans-serif;
 
-  /* === Font Weight === */
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --font-weight-extrabold: 800;
+  /* === CSS Variables via :root === */
+  :root {
+    --font-quicksand: 'Quicksand', sans-serif;
 
-  /* === Display Font Sizes === */
-  --font-size-display-3xl: 3.75rem;
-  --line-height-display-3xl: 4.5rem;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
 
-  --font-size-display-2xl: 3rem;
-  --line-height-display-2xl: 3.75rem;
-  --letter-spacing-display-2xl: -0.02em;
+    --font-size-display-3xl: 3.75rem;
+    --line-height-display-3xl: 4.5rem;
 
-  --font-size-display-xl: 2.5rem;
-  --line-height-display-xl: 3rem;
-  --letter-spacing-display-xl: -0.02em;
+    --font-size-display-2xl: 3rem;
+    --line-height-display-2xl: 3.75rem;
+    --letter-spacing-display-2xl: -0.02em;
 
-  --font-size-display-lg: 2.25rem;
-  --line-height-display-lg: 2.75rem;
-  --letter-spacing-display-lg: -0.02em;
+    --font-size-display-xl: 2.5rem;
+    --line-height-display-xl: 3rem;
+    --letter-spacing-display-xl: -0.02em;
 
-  --font-size-display-md: 2rem;
-  --line-height-display-md: 2.5rem;
+    --font-size-display-lg: 2.25rem;
+    --line-height-display-lg: 2.75rem;
+    --letter-spacing-display-lg: -0.02em;
 
-  --font-size-display-sm: 1.75rem;
-  --line-height-display-sm: 2.375rem;
+    --font-size-display-md: 2rem;
+    --line-height-display-md: 2.5rem;
 
-  --font-size-display-xs: 1.5rem;
-  --line-height-display-xs: 2.25rem;
+    --font-size-display-sm: 1.75rem;
+    --line-height-display-sm: 2.375rem;
 
-  /* === Text Font Sizes === */
-  --font-size-text-xl: 1.25rem;
-  --line-height-text-xl: 2.125rem;
+    --font-size-display-xs: 1.5rem;
+    --line-height-display-xs: 2.25rem;
 
-  --font-size-text-lg: 1.125rem; /* 18px */
-  --line-height-text-lg: 1.75rem;
+    --font-size-text-xl: 1.25rem;
+    --line-height-text-xl: 2.125rem;
 
-  --font-size-text-md: 1rem;
-  --line-height-text-md: 1.875rem;
+    --font-size-text-lg: 1.125rem;
+    --line-height-text-lg: 1.75rem;
 
-  --font-size-text-sm: 0.875rem; /* 14px */
-  --line-height-text-sm: 1.5rem;
+    --font-size-text-md: 1rem;
+    --line-height-text-md: 1.875rem;
 
-  --font-size-text-xs: 0.75rem;
-  --line-height-text-xs: 1.5rem;
+    --font-size-text-sm: 0.875rem;
+    --line-height-text-sm: 1.5rem;
 
-  /* === Colors === */
-  --color-primary-500: oklch(0.72 0.18 39); /* Orange terang */
+    --font-size-text-xs: 0.75rem;
+    --line-height-text-xs: 1.5rem;
+
+    --color-primary-500: oklch(0.72 0.18 39);
+  }
 }
 
-layer components {
+@layer components {
   .step-card {
-    @apply w-full max-w-[95%]  p-6 rounded-xl shadow-md border border-neutral-100 relative;
+    @apply w-full max-w-[95%] p-6 rounded-xl shadow-md border border-neutral-100 relative;
   }
 
   .step-card:nth-child(even) {
@@ -96,21 +92,52 @@ layer components {
     @apply hidden lg:block absolute top-0 left-1/2 w-px h-full bg-neutral-300 -translate-x-1/2 z-0;
   }
 
+  /* === Social Media Icon Sprite === */
+  .icon {
+    background-image: url('/assets/social-media-ico.png');
+    background-size: 400%;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+  }
+
+  .icon-facebook {
+    background-position: 0% 0;
+  }
+
+  .icon-instagram {
+    background-position: 33.3% 0;
+  }
+
+  .icon-linkedin {
+    background-position: 66.6% 0;
+  }
+
+  .icon-tiktok {
+    background-position: 100% 0;
+  }
+
+  .dark .icon {
+    background-image: url('/assets/social-media-icons-dark.png');
+  }
+
+  /* Optional for Step Number Image */
   .step-number-img {
     @apply absolute z-10;
-    width: 2rem; /* default mobile: 32px */
+    width: 2rem;
     height: 2rem;
     top: 0;
     left: -1rem;
+  }
 
-    @media (min-width: 1024px) {
-      .step-number-img {
-        width: 3rem; /* 48px */
-        height: 3rem;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%) translateY(-50%);
-      }
+  @media (min-width: 1024px) {
+    .step-number-img {
+      width: 3rem;
+      height: 3rem;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%) translateY(-50%);
     }
   }
 }
