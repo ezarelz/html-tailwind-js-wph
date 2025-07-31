@@ -9,14 +9,26 @@
       rel="stylesheet"
     />
     <link href="./src/css/output.css" rel="stylesheet" />
+    <script>
+      // Deteksi dan set dark mode saat pertama kali load
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
   </head>
 
   <body
     style="font-family: var(--font-quicksand)"
-    class="text-gray-900 bg-white"
+    class="text-gray-900 bg-white dark:bg-gray-900 dark:text-white"
   >
     <!-- === HEADER START === -->
-    <header class="w-full fixed top-0 left-0 z-50 bg-white shadow-sm">
+    <header class="w-full fixed top-0 left-0 z-50">
       <div
         class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between"
       >
@@ -32,17 +44,14 @@
               font-weight: var(--font-weight-bold);
               font-size: var(--font-size-text-lg);
             "
-            class="ml-1 text-[#0F172A]"
+            class="ml-1"
             >Your Logo</span
           >
         </a>
 
         <!-- Hamburger (Mobile Only) -->
         <div class="lg:hidden">
-          <button
-            id="hamburgerBtn"
-            class="text-2xl text-black focus:outline-none"
-          >
+          <button id="hamburgerBtn" class="text-2xl focus:outline-none">
             ☰
           </button>
         </div>
@@ -50,7 +59,7 @@
         <!-- Mobile Menu -->
         <div
           id="mobileMenu"
-          class="hidden lg:hidden fixed top-16 right-4 bg-white shadow-md px-6 py-6 rounded-md w-64"
+          class="hidden lg:hidden fixed top-16 right-4 px-6 py-6 rounded-md w-64"
         >
           <nav class="flex flex-col space-y-4">
             <a
@@ -172,7 +181,7 @@
     </script>
 
     <!-- === HERO START === -->
-    <section class="pt-32 pb-16 bg-white">
+    <section class="pt-32 pb-16">
       <div
         class="max-w-7xl mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-12"
       >
@@ -194,7 +203,7 @@
               font-size: var(--font-size-text-md);
               line-height: var(--line-height-text-md);
             "
-            class="text-gray-700 mb-6"
+            class="mb-6"
           >
             We deliver tailored IT solutions to help you scale with speed and
             confidence.
@@ -220,7 +229,7 @@
     <!-- === HERO END === -->
 
     <!-- === ABOUT SECTION START === -->
-    <section id="about" class="py-12 bg-white">
+    <section id="about" class="py-12">
       <div class="max-w-7xl mx-auto px-4 text-center">
         <h2
           style="
@@ -244,7 +253,7 @@
         </p>
 
         <!-- Brand Logo -->
-        <div class="py-2 flex justify-center">
+        <div class="py-2 flex justify-center bg-gray-300">
           <img
             src="./assets/container-logo.png"
             alt="Trusted by Global Brands"
@@ -284,35 +293,35 @@
     <!-- our process start -->
     <section class="relative py-16 px-4">
       <h2 class="text-center font-bold text-2xl lg:text-3xl">Our Process</h2>
-      <p class="text-center text-base text-gray-500 mt-2 mb-10">
+      <p class="text-center text-base mt-2 mb-10">
         Clear steps. Smart execution. Results you can count on.
       </p>
 
       <div class="relative max-w-[800px] mx-auto flex flex-col gap-y-16">
         <!-- Vertical line -->
         <div
-          class="absolute top-0 left-6 lg:left-1/2 lg:-translate-x-1/2 w-px h-full bg-gray-300 z-0"
+          class="absolute top-0 left-6 lg:left-1/2 lg:-translate-x-1/2 w-px h-full bg-white z-10"
         ></div>
 
         <!-- Step Template -->
         <div class="relative z-10 pl-12 lg:pl-0">
-          <!-- Mobile number -->
+          <!-- Step 1 -->
           <img
             src="./assets/number-1.png"
             alt="Step 1"
             class="block lg:hidden w-12 h-12 absolute -left-1 top-0 z-10"
           />
-          <!-- Desktop number -->
+          <!-- Step 1 -->
           <img
             src="./assets/number-1.png"
             alt="Step 1"
             class="hidden lg:block w-12 h-12 absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2 z-10"
           />
           <div
-            class="bg-white border border-gray-200 shadow-md rounded-xl p-6 max-w-full"
+            class="border border-gray-500 shadow-md rounded-xl p-6 max-w-full"
           >
             <h3 class="text-lg font-bold">Discovery & Consultation</h3>
-            <p class="text-sm text-gray-500">Understand Your Needs & Goals</p>
+            <p class="text-sm">Understand Your Needs & Goals</p>
           </div>
         </div>
 
@@ -329,10 +338,10 @@
             class="hidden lg:block w-12 h-12 absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2 z-10"
           />
           <div
-            class="bg-white border border-gray-200 shadow-md rounded-xl p-6 max-w-full"
+            class="border border-gray-500 shadow-md rounded-xl p-6 max-w-full"
           >
             <h3 class="text-lg font-bold">Planning & Strategy</h3>
-            <p class="text-sm text-gray-500">Build a Clear, Scalable Roadmap</p>
+            <p class="text-sm">Build a Clear, Scalable Roadmap</p>
           </div>
         </div>
 
@@ -349,10 +358,10 @@
             class="hidden lg:block w-12 h-12 absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2 z-10"
           />
           <div
-            class="bg-white border border-gray-200 shadow-md rounded-xl p-6 max-w-full"
+            class="border border-gray-500 shadow-md rounded-xl p-6 max-w-full"
           >
             <h3 class="text-lg font-bold">Design & Prototyping</h3>
-            <p class="text-sm text-gray-500">Craft UX That Converts</p>
+            <p class="text-sm">Craft UX That Converts</p>
           </div>
         </div>
 
@@ -369,7 +378,7 @@
             class="hidden lg:block w-12 h-12 absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2 z-10"
           />
           <div
-            class="bg-white border border-gray-200 shadow-md rounded-xl p-6 max-w-full"
+            class="border border-gray-500 shadow-md rounded-xl p-6 max-w-full"
           >
             <h3 class="text-lg font-bold">Development & Implementation</h3>
             <p class="text-sm text-gray-500">Deliver With Speed & Precision</p>
@@ -389,7 +398,7 @@
             class="hidden lg:block w-12 h-12 absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2 z-10"
           />
           <div
-            class="bg-white border border-gray-200 shadow-md rounded-xl p-6 max-w-full"
+            class="border border-gray-200 shadow-md rounded-xl p-6 max-w-full"
           >
             <h3 class="text-lg font-bold">Testing & Optimization</h3>
             <p class="text-sm text-gray-500">Ensure Quality at Every Step</p>
@@ -409,7 +418,7 @@
             class="hidden lg:block w-12 h-12 absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2 z-10"
           />
           <div
-            class="bg-white border border-gray-200 shadow-md rounded-xl p-6 max-w-full"
+            class="border border-gray-200 shadow-md rounded-xl p-6 max-w-full"
           >
             <h3 class="text-lg font-bold">Launch & Growth</h3>
             <p class="text-sm text-gray-500">
@@ -423,7 +432,7 @@
     <!-- our process end -->
 
     <!-- Start Bagian Our Services -->
-    <section id="service" class="py-16 px-4 bg-white">
+    <section id="service" class="py-16 px-4">
       <h2 class="text-center text-[32px] leading-[40px] font-bold mb-2">
         Smart IT Solutions That Grow With You
       </h2>
@@ -436,7 +445,7 @@
       >
         <!-- Web Development -->
         <div
-          class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/website-icon.png"
@@ -447,7 +456,7 @@
             <h3 class="text-[16px] leading-[30px] font-bold mb-1">
               Web Development
             </h3>
-            <p class="text-[14px] leading-[28px] text-gray-600">
+            <p class="text-[14px] leading-[28px]">
               Build fast, scalable, and SEO-friendly websites.
             </p>
           </div>
@@ -455,7 +464,7 @@
 
         <!-- Mobile App Development -->
         <div
-          class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/mobile-app-dev_icon.png"
@@ -466,7 +475,7 @@
             <h3 class="text-[16px] leading-[30px] font-bold mb-1">
               Mobile App Development
             </h3>
-            <p class="text-[14px] leading-[28px] text-gray-600">
+            <p class="text-[14px] leading-[28px]">
               Native & cross-platform apps tailored to user needs.
             </p>
           </div>
@@ -474,7 +483,7 @@
 
         <!-- UI/UX Design -->
         <div
-          class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/ux-design-ico.png"
@@ -485,7 +494,7 @@
             <h3 class="text-[16px] leading-[30px] font-bold mb-1">
               UI/UX Design
             </h3>
-            <p class="text-[14px] leading-[28px] text-gray-600">
+            <p class="text-[14px] leading-[28px]">
               Delight users with intuitive and beautiful interfaces.
             </p>
           </div>
@@ -493,7 +502,7 @@
 
         <!-- Cloud Solutions -->
         <div
-          class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/cloud_solutions-ico.png"
@@ -504,7 +513,7 @@
             <h3 class="text-[16px] leading-[30px] font-bold mb-1">
               Cloud Solutions
             </h3>
-            <p class="text-[14px] leading-[28px] text-gray-600">
+            <p class="text-[14px] leading-[28px]">
               Secure and flexible cloud infrastructure for your growth.
             </p>
           </div>
@@ -512,7 +521,7 @@
 
         <!-- Software Development -->
         <div
-          class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/software_development-ico.png"
@@ -523,7 +532,7 @@
             <h3 class="text-[16px] leading-[30px] font-bold mb-1">
               Software Development
             </h3>
-            <p class="text-[14px] leading-[28px] text-gray-600">
+            <p class="text-[14px] leading-[28px]">
               Custom solutions built around your business logic.
             </p>
           </div>
@@ -531,7 +540,7 @@
 
         <!-- IT Infrastructure -->
         <div
-          class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/it-infrastructure_ico.png"
@@ -542,7 +551,7 @@
             <h3 class="text-[16px] leading-[30px] font-bold mb-1">
               IT Infrastructure
             </h3>
-            <p class="text-[14px] leading-[28px] text-gray-600">
+            <p class="text-[14px] leading-[28px]">
               Scale your backend with reliable tech foundations.
             </p>
           </div>
@@ -550,7 +559,7 @@
 
         <!-- Cybersecurity Services -->
         <div
-          class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/cybersecurity-services_ico.png"
@@ -561,7 +570,7 @@
             <h3 class="text-[16px] leading-[30px] font-bold mb-1">
               Cybersecurity Services
             </h3>
-            <p class="text-[14px] leading-[28px] text-gray-600">
+            <p class="text-[14px] leading-[28px]">
               Stay protected with enterprise-grade security.
             </p>
           </div>
@@ -569,7 +578,7 @@
 
         <!-- QA Solutions -->
         <div
-          class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/qa_solution.png"
@@ -588,7 +597,7 @@
 
         <!-- IT Consulting -->
         <div
-          class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/it-cons-sol-ico.png"
@@ -610,13 +619,15 @@
     <!-- End Our Services  -->
 
     <!-- Start Our Industry -->
-    <section class="py-16 px-4 bg-white">
+    <section class="py-16 px-4">
       <!-- Title & Subtitle -->
-      <h2 class="text-[32px] leading-[40px] font-bold text-center lg:text-left">
+      <h2
+        class="text-[32px] leading-[40px] font-bold text-center lg:text-center"
+      >
         Built for Your Industry
       </h2>
       <p
-        class="text-[16px] leading-[30px] text-gray-500 text-center lg:text-left mt-2 mb-10"
+        class="text-[16px] leading-[30px] text-center lg:text-center mt-2 mb-10"
       >
         We’ve helped companies across industries launch smarter, faster, and
         more securely.
@@ -633,12 +644,12 @@
           <li class="text-[#FF5722] border-l-4 border-[#FF5722] pl-4">
             Fintech
           </li>
-          <li class="text-gray-400 border-l pl-4">E-Commerce</li>
-          <li class="text-gray-400 border-l pl-4">Healthcare</li>
+          <li class="border-l pl-4">E-Commerce</li>
+          <li class="border-l pl-4">Healthcare</li>
         </ul>
 
         <!-- Description -->
-        <div class="text-[16px] leading-[30px] text-gray-700 lg:col-span-1">
+        <div class="text-[16px] leading-[30px] lg:col-span-1">
           <p>
             We build secure, scalable, and compliant fintech solutions — from
             digital wallets to core banking systems — tailored to modern
@@ -660,7 +671,7 @@
     <!-- End Our Industry -->
 
     <!-- Start Section Our Work -->
-    <section class="py-16 px-4 bg-white">
+    <section class="py-16 px-4">
       <!-- Heading -->
       <h2 class="text-[32px] leading-[40px] font-bold text-center">
         From Vision to Launch! Projects We’re Proud Of
@@ -721,7 +732,7 @@
     <!-- End Section Our Work -->
 
     <!-- Start Section Tesminonials -->
-    <section class="py-16 px-4 bg-white">
+    <section class="py-16 px-4">
       <!-- Title -->
       <h2 class="text-[32px] leading-[40px] font-bold text-center">
         What Partners Say About Working With Us
@@ -735,9 +746,7 @@
       <!-- Testimonial Card Container -->
       <div id="testimonials" class="relative max-w-3xl mx-auto">
         <!-- Testimonial Card -->
-        <div
-          class="bg-white border border-gray-200 rounded-xl px-6 pt-12 pb-12 text-center shadow-sm relative"
-        >
+        <div class="rounded-xl px-6 pt-12 pb-12 text-center shadow-sm relative">
           <!-- Quote Icon (Top Left) -->
           <img
             src="./assets/tdesign_quote-filled.png"
@@ -789,7 +798,7 @@
     <!-- End Section Testimonials -->
 
     <!-- Start Bagian contact -->
-    <section id="contact" class="py-16 px-4 bg-white">
+    <section id="contact" class="py-16 px-4">
       <!-- Heading -->
       <h2 class="text-[32px] leading-[40px] font-bold text-center">
         Ready to Start? Let’s Talk.
