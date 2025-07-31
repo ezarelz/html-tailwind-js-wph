@@ -3,6 +3,7 @@
     "dev": "npx @tailwindcss/cli -i ./src/css/input.css -o ./src/css/output.css --watch"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@tailwindcss/cli": "^4.1.11",
     "tailwindcss": "^4.1.11"
   }

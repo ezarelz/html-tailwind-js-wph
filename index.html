@@ -446,7 +446,7 @@
       >
         <!-- Web Development -->
         <div
-          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm border border-transparent dark:border-white flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/website-icon.png"
@@ -465,7 +465,7 @@
 
         <!-- Mobile App Development -->
         <div
-          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm border border-transparent dark:border-white flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/mobile-app-dev_icon.png"
@@ -484,7 +484,7 @@
 
         <!-- UI/UX Design -->
         <div
-          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm border border-transparent dark:border-white flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/ux-design-ico.png"
@@ -503,7 +503,7 @@
 
         <!-- Cloud Solutions -->
         <div
-          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm border border-transparent dark:border-white flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/cloud_solutions-ico.png"
@@ -522,7 +522,7 @@
 
         <!-- Software Development -->
         <div
-          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm border border-transparent dark:border-white flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/software_development-ico.png"
@@ -541,7 +541,7 @@
 
         <!-- IT Infrastructure -->
         <div
-          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm border border-transparent dark:border-white flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/it-infrastructure_ico.png"
@@ -560,7 +560,7 @@
 
         <!-- Cybersecurity Services -->
         <div
-          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm border border-transparent dark:border-white flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/cybersecurity-services_ico.png"
@@ -579,7 +579,7 @@
 
         <!-- QA Solutions -->
         <div
-          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
+          class="p-6 rounded-xl shadow-sm border border-transparent dark:border-white flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
         >
           <img
             src="./assets/qa_solution.png"
@@ -590,34 +590,13 @@
             <h3 class="text-[16px] leading-[30px] font-bold mb-1">
               QA Solutions
             </h3>
-            <p class="text-[14px] leading-[28px] text-gray-600">
+            <p class="text-[14px] leading-[28px]">
               Ensure performance with rigorous testing frameworks.
-            </p>
-          </div>
-        </div>
-
-        <!-- IT Consulting -->
-        <div
-          class="p-6 rounded-xl shadow-sm flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-start"
-        >
-          <img
-            src="./assets/it-cons-sol-ico.png"
-            alt="IT Consulting Icon"
-            class="w-12 h-12 mb-4 lg:mb-0 lg:mr-4"
-          />
-          <div>
-            <h3 class="text-[16px] leading-[30px] font-bold mb-1">
-              IT Consulting & Support
-            </h3>
-            <p class="text-[14px] leading-[28px] text-gray-600">
-              Make smarter tech decisions with expert guidance.
             </p>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- End Our Services  -->
 
     <!-- Start Our Industry -->
     <section class="py-16 px-4">
@@ -929,7 +908,7 @@
       </p>
 
       <!-- Form Container -->
-      <form class="max-w-3xl mx-auto space-y-6">
+      <form id="contact-form" class="max-w-3xl mx-auto space-y-6">
         <!-- Name -->
         <div>
           <label for="name" class="block text-[14px] font-semibold mb-1"
@@ -1019,7 +998,37 @@
         </div>
       </form>
     </section>
+    <!-- Script Send Email -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+      // Inisialisasi EmailJS dengan Public Key kamu
+      emailjs.init('w2WwAipaNHy5iCOmU');
 
+      function sendEmail(e) {
+        e.preventDefault(); // Cegah form reload
+
+        const form = document.getElementById('contact-form');
+
+        emailjs
+          .sendForm('service_jbgam26', 'template_ntv33kd', form)
+          .then(() => {
+            alert('Message sent successfully!');
+            form.reset(); // Kosongkan form setelah kirim
+          })
+          .catch((error) => {
+            alert('Failed to send message. Please try again.');
+            console.error('EmailJS Error:', error);
+          });
+      }
+
+      // Tambahkan event listener setelah semua DOM siap
+      document.addEventListener('DOMContentLoaded', function () {
+        document
+          .getElementById('contact-form')
+          .addEventListener('submit', sendEmail);
+      });
+    </script>
+    <!-- Script Email Send End -->
     <!-- end bagian contact -->
 
     <!-- === Footer Start === -->
@@ -1028,11 +1037,13 @@
       class="px-6 py-16 bg-white dark:bg-black transition-colors duration-300"
     >
       <div
-        class="max-w-7xl mx-auto rounded-3xl bg-gray-300 dark:bg-gray-900 p-10 flex flex-col-reverse items-center text-center gap-6 lg:flex-row lg:justify-between lg:items-start lg:text-left lg:gap-0"
+        class="max-w-7xl mx-auto rounded-3xl bg-gray-100 dark:bg-gray-900 p-10 flex flex-col-reverse items-center text-center gap-6 lg:flex-row lg:justify-between lg:items-start lg:text-left lg:gap-0"
       >
         <!-- LEFT: Title dan Menu -->
         <div class="space-y-6">
-          <h2 class="text-2xl font-bold leading-tight text-white">
+          <h2
+            class="text-2xl font-bold leading-tight text-black dark:text-white"
+          >
             LET’S DISCUSS YOUR <span class="block">IDEAS</span>
           </h2>
 
@@ -1041,7 +1052,7 @@
 
           <!-- Menu -->
           <nav
-            class="flex flex-col gap-3 text-sm font-medium text-white lg:flex-row lg:space-x-20"
+            class="flex flex-col gap-3 text-sm font-medium text-black dark:text-white lg:flex-row lg:space-x-20"
           >
             <a href="#about" class="hover:underline">About</a>
             <a href="#services" class="hover:underline">Service</a>
@@ -1056,12 +1067,12 @@
           <!-- Logo -->
           <a href="#" class="flex items-center justify-center lg:justify-end">
             <img
-              src="./assets/logo-symbol.png"
+              src="../assets/logo-symbol.png"
               alt="Logo Icon"
               class="h-6 w-auto"
             />
             <span
-              class="ml-1 text-white font-bold"
+              class="ml-1 text-black font-bold dark:text-white"
               style="font-size: var(--font-size-text-lg)"
             >
               Your Logo
