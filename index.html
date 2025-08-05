@@ -87,6 +87,11 @@
               >Testimonials</a
             >
             <a
+              href="kalkulator.html"
+              class="text-slate-900 dark:text-white hover:text-orange-500 dark:hover:text-orange-400 font-medium text-base"
+              >Try Calculator</a
+            >
+            <a
               href="#faq"
               class="text-slate-900 dark:text-white hover:text-orange-500 dark:hover:text-orange-400 font-medium text-base"
               >FAQ</a
@@ -100,7 +105,7 @@
         </div>
 
         <!-- Desktop Nav -->
-        <nav class="hidden lg:flex items-center space-x-30">
+        <nav class="hidden lg:flex items-center space-x-20">
           <a
             href="#about"
             class="text-slate-900 dark:text-white hover:text-orange-500 dark:hover:text-orange-400 font-medium text-base"
@@ -120,6 +125,11 @@
             href="#testimonials"
             class="text-slate-900 dark:text-white hover:text-orange-500 dark:hover:text-orange-400 font-medium text-base"
             >Testimonials</a
+          >
+          <a
+            href="kalkulator.html"
+            class="text-slate-900 dark:text-white hover:text-orange-500 dark:hover:text-orange-400 font-medium text-base"
+            >Try Calculator</a
           >
           <a
             href="#faq"
@@ -956,32 +966,63 @@
           <div class="grid grid-cols-1 gap-y-2 lg:grid-cols-2 lg:gap-x-4">
             <!-- Checkbox Item -->
             <label class="inline-flex items-center space-x-2">
-              <input type="checkbox" class="accent-[#FF5722] w-5 h-5" checked />
+              <input
+                type="checkbox"
+                class="accent-[#FF5722] w-5 h-5"
+                name="services[]"
+                value="Web Development"
+                checked
+              />
               <span class="text-[14px]">Web Development</span>
             </label>
 
             <label class="inline-flex items-center space-x-2">
-              <input type="checkbox" class="accent-[#FF5722] w-5 h-5" />
+              <input
+                type="checkbox"
+                class="accent-[#FF5722] w-5 h-5"
+                name="services[]"
+                value="Mobile App Development"
+              />
               <span class="text-[14px]">Mobile App Development</span>
             </label>
 
             <label class="inline-flex items-center space-x-2">
-              <input type="checkbox" class="accent-[#FF5722] w-5 h-5" />
+              <input
+                type="checkbox"
+                class="accent-[#FF5722] w-5 h-5"
+                name="services[]"
+                value="UI/UX Design"
+              />
               <span class="text-[14px]">UI/UX Design</span>
             </label>
 
             <label class="inline-flex items-center space-x-2">
-              <input type="checkbox" class="accent-[#FF5722] w-5 h-5" />
+              <input
+                type="checkbox"
+                class="accent-[#FF5722] w-5 h-5"
+                name="services[]"
+                value="Cloud Solutions"
+              />
               <span class="text-[14px]">Cloud Solutions</span>
             </label>
 
             <label class="inline-flex items-center space-x-2">
-              <input type="checkbox" class="accent-[#FF5722] w-5 h-5" />
+              <input
+                type="checkbox"
+                class="accent-[#FF5722] w-5 h-5"
+                name="services[]"
+                value="Software Development"
+              />
               <span class="text-[14px]">Software Development</span>
             </label>
 
             <label class="inline-flex items-center space-x-2">
-              <input type="checkbox" class="accent-[#FF5722] w-5 h-5" />
+              <input
+                type="checkbox"
+                class="accent-[#FF5722] w-5 h-5"
+                name="services[]"
+                value="Other"
+              />
               <span class="text-[14px]">Other</span>
             </label>
           </div>
@@ -1001,8 +1042,7 @@
     <!-- Script Send Email -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-      // Inisialisasi EmailJS dengan Public Key kamu
-      emailjs.init('w2WwAipaNHy5iCOmU');
+      emailjs.init('w2WwAipaNHy5iCOmU'); //pubKey
 
       function sendEmail(e) {
         e.preventDefault(); // Cegah form reload

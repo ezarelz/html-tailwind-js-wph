@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator Interaktif</title>
+    <link rel="stylesheet" href="./src/css/output.css" />
+    <script>
+      // Deteksi dan set dark mode saat pertama kali load
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </head>
+  <body
+    style="font-family: 'Quicksand', sans-serif"
+    class="text-gray-900 bg-gray-100 min-h-screen flex flex-col dark:bg-black dark:text-white"
+  >
+    <!-- Tombol Back -->
+    <div class="p-4">
+      <a
+        href="index.html"
+        class="inline-flex items-center px-4 py-2 bg-[#FF5722] text-white font-semibold rounded-lg shadow hover:opacity-90 transition"
+      >
+        ← Back to Home
+      </a>
+    </div>
+
+    <!-- Kalkulator -->
+    <main class="flex-1 flex items-center justify-center">
+      <div
+        class="bg-white p-6 text-black rounded-lg shadow-lg w-full max-w-md dark:bg-sky-800 dark:text-white"
+      >
+        <h2 class="text-2xl font-bold mb-4 text-center">
+          Kalkulator Interaktif
+        </h2>
+
+        <!-- Angka Pertama -->
+        <label for="angka1" class="block text-sm font-medium mb-1"
+          >Angka Pertama:</label
+        >
+        <input
+          type="number"
+          id="angka1"
+          placeholder="Masukkan angka pertama"
+          class="w-full border rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#FF5722] focus:outline-none"
+        />
+
+        <!-- Operator -->
+        <label for="operator" class="block text-sm font-medium mb-1"
+          >Operator:</label
+        >
+        <select
+          id="operator"
+          class="w-full border rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#FF5722] focus:outline-none"
+        >
+          <option value="+">tambah (+)</option>
+          <option value="-">kurang (-)</option>
+          <option value="*">kali (*)</option>
+          <option value="/">bagi (/)</option>
+          <option value="%">modulo (%)</option>
+          <option value="**">pangkat (**)</option>
+        </select>
+
+        <!-- Angka Kedua -->
+        <label for="angka2" class="block text-sm font-medium mb-1"
+          >Angka Kedua:</label
+        >
+        <input
+          type="number"
+          id="angka2"
+          placeholder="Masukkan angka kedua"
+          class="w-full border rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#FF5722] focus:outline-none"
+        />
+
+        <!-- Tombol -->
+        <div class="flex gap-3 mb-4">
+          <button
+            onclick="hitung()"
+            class="flex-1 bg-green-500 text-white font-bold py-2 rounded-lg hover:opacity-90 transition"
+          >
+            Hitung
+          </button>
+          <button
+            onclick="resetCalc()"
+            class="flex-1 bg-red-500 text-white font-bold py-2 rounded-lg hover:bg-red-600 transition"
+          >
+            Reset
+          </button>
+        </div>
+
+        <!-- Output -->
+        <div
+          id="output"
+          class="mt-4 bg-gray-50 border-l-4 border-[#FF5722] p-3 font-mono whitespace-pre-line text-sm text-gray-700 dark:bg-black dark:text-white"
+        ></div>
+      </div>
+    </main>
+
+    <script>
+      function mod(a, b) {
+        return a % b;
+      }
+      function tambah(a, b) {
+        return a + b;
+      }
+      function kurang(a, b) {
+        return a - b;
+      }
+      function kali(a, b) {
+        return a * b;
+      }
+      function bagi(a, b) {
+        return b === 0 ? 'Error: Division by zero!' : a / b;
+      }
+      function pangkat(a, b) {
+        return a ** b;
+      }
+
+      function hitung() {
+        const angka1 = document.getElementById('angka1').value;
+        const angka2 = document.getElementById('angka2').value;
+        const operator = document.getElementById('operator').value;
+        const outputDiv = document.getElementById('output');
+
+        if (angka1 === '' || angka2 === '') {
+          outputDiv.textContent = '❌ Harap isi kedua angka!';
+          return;
+        }
+
+        const num1 = Number(angka1);
+        const num2 = Number(angka2);
+        let hasil;
+
+        switch (operator) {
+          case '+':
+            hasil = tambah(num1, num2);
+            break;
+          case '-':
+            hasil = kurang(num1, num2);
+            break;
+          case '*':
+            hasil = kali(num1, num2);
+            break;
+          case '/':
+            hasil = bagi(num1, num2);
+            break;
+          case '%':
+            hasil = mod(num1, num2);
+            break;
+          case '**':
+            hasil = pangkat(num1, num2);
+            break;
+          default:
+            hasil = 'Operator tidak dikenali';
+        }
+
+        let outputText = `---------\nHasil dari ${num1} ${operator} ${num2} adalah:\n    = ${hasil}\n---------\n`;
+
+        if (typeof hasil === 'number') {
+          if (hasil > 0) outputText += 'Hasil bernilai positif\n';
+          else if (hasil < 0) outputText += 'Hasil bernilai negatif\n';
+          else outputText += 'Hasil adalah nol\n';
+
+          if (Number.isInteger(hasil)) {
+            if (mod(hasil, 2) === 0)
+              outputText += 'Hasil adalah bilangan genap\n';
+            else outputText += 'Hasil adalah bilangan ganjil\n';
+          } else {
+            outputText += 'Hasil adalah bilangan desimal\n';
+          }
+
+          if (hasil > 0 && mod(hasil, 2) === 0)
+            outputText += 'Hasil angka adalah: positif DAN genap\n';
+          if (hasil > 0 && mod(hasil, 2) !== 0)
+            outputText += 'Hasil angka adalah: positif DAN ganjil\n';
+          if (hasil < 0 || mod(hasil, 2) !== 0)
+            outputText += 'Hasil angka adalah: mungkin negatif ATAU ganjil\n';
+          if (hasil < 0 || mod(hasil, 2) === 0)
+            outputText += 'Hasil angka adalah: mungkin negatif ATAU genap\n';
+        }
+
+        outputDiv.textContent = outputText;
+      }
+
+      function resetCalc() {
+        document.getElementById('angka1').value = '';
+        document.getElementById('angka2').value = '';
+        document.getElementById('operator').value = '+';
+        document.getElementById('output').textContent = '';
+      }
+    </script>
+  </body>
+</html>
